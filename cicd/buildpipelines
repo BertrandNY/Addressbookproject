@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-    maven 'mymaven'
+      maven 'mymaven'
     }
     stages {
         stage('Scan and Build') {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sshagent(['jenkins_techports']) {
+                sshagent(['newjenkins']) {
   sh "scp -o StrictHostKeyChecking=no target/*.war techports@52.202.89.225:/home/techports/tomcat/webapps"
 }
             }
